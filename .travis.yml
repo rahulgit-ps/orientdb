@@ -8,6 +8,9 @@ cache:
   - $HOME/.m2
 install: true
 script:
+  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+     sudo apt-get install maven;
+    fi
   - mvn clean test -Dmaven.test.redirectTestOutputToFile=true -P travis
   - mvn jacoco:report -P travis
 branches:

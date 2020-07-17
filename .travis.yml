@@ -6,14 +6,14 @@ arch:
 cache:
   directories:
   - $HOME/.m2
-install: true
-script:
+install:
   - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
      sudo apt-get install maven;
      sudo apt-get install openjdk-11-jdk;
      export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64;
      export PATH=$JAVA_HOME:$PATH;
    fi
+script:
   - mvn clean test -Dmaven.test.redirectTestOutputToFile=true -P travis
   - mvn jacoco:report -P travis
 branches:

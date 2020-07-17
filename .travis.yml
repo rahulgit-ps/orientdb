@@ -1,5 +1,8 @@
 sudo: false
 language: java
+arch:
+  - arm64
+  - amd64
 cache:
   directories:
   - $HOME/.m2
